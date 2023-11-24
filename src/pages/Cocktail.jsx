@@ -24,6 +24,8 @@ const Cocktail = () => {
     strInstructions: instructions,
   } = singleDrink;
 
+  console.log(singleDrink);
+
   return (
     <Wrapper>
       <header>
