@@ -39,23 +39,32 @@ const Cocktail = () => {
     strIngredient15,
   } = singleDrink;
 
-  const ingredientsArray = [
-    strIngredient1,
-    strIngredient2,
-    strIngredient3,
-    strIngredient4,
-    strIngredient5,
-    strIngredient6,
-    strIngredient7,
-    strIngredient8,
-    strIngredient9,
-    strIngredient10,
-    strIngredient11,
-    strIngredient12,
-    strIngredient13,
-    strIngredient14,
-    strIngredient15,
-  ];
+  // const ingredientsArray = [
+  //   strIngredient1,
+  //   strIngredient2,
+  //   strIngredient3,
+  //   strIngredient4,
+  //   strIngredient5,
+  //   strIngredient6,
+  //   strIngredient7,
+  //   strIngredient8,
+  //   strIngredient9,
+  //   strIngredient10,
+  //   strIngredient11,
+  //   strIngredient12,
+  //   strIngredient13,
+  //   strIngredient14,
+  //   strIngredient15,
+  // ];
+
+  const ingredients2 = Object.keys(singleDrink)
+    .filter((key) => {
+      if (key.startsWith('strIngredient') && singleDrink[key] != null) {
+        return key;
+      }
+    })
+    .map((item) => singleDrink[item])
+    .join(', ');
 
   return (
     <Wrapper>
@@ -86,12 +95,7 @@ const Cocktail = () => {
           </p>
           <p>
             <span className="drink-data">ingredients :</span>
-            {ingredientsArray
-              .filter((item) => {
-                if (!item) return;
-                return item;
-              })
-              .join(', ')}
+            {ingredients2}
           </p>
           <p>
             <span className="drink-data">instructions :</span>
