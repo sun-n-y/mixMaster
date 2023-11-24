@@ -22,9 +22,40 @@ const Cocktail = () => {
     strCategory: category,
     strGlass: glass,
     strInstructions: instructions,
+    strIngredient1,
+    strIngredient2,
+    strIngredient3,
+    strIngredient4,
+    strIngredient5,
+    strIngredient6,
+    strIngredient7,
+    strIngredient8,
+    strIngredient9,
+    strIngredient10,
+    strIngredient11,
+    strIngredient12,
+    strIngredient13,
+    strIngredient14,
+    strIngredient15,
   } = singleDrink;
 
-  console.log(singleDrink);
+  const ingredientsArray = [
+    strIngredient1,
+    strIngredient2,
+    strIngredient3,
+    strIngredient4,
+    strIngredient5,
+    strIngredient6,
+    strIngredient7,
+    strIngredient8,
+    strIngredient9,
+    strIngredient10,
+    strIngredient11,
+    strIngredient12,
+    strIngredient13,
+    strIngredient14,
+    strIngredient15,
+  ];
 
   return (
     <Wrapper>
@@ -52,6 +83,15 @@ const Cocktail = () => {
           <p>
             <span className="drink-data">glass :</span>
             {glass}
+          </p>
+          <p>
+            <span className="drink-data">ingredients :</span>
+            {ingredientsArray
+              .filter((item) => {
+                if (!item) return;
+                return item;
+              })
+              .join(', ')}
           </p>
           <p>
             <span className="drink-data">instructions :</span>
