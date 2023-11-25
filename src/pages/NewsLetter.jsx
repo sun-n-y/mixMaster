@@ -1,4 +1,4 @@
-import { Form, redirect } from 'react-router-dom';
+import { Form, Link, redirect } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
@@ -9,8 +9,9 @@ export const action = async ({ request }) => {
   const data = Object.fromEntries(formData);
 
   const response = await axios.post(newsletterUrl, data);
-  console.log(response);
-  return response;
+  toast.success(response.data.msg);
+
+  return redirect('/');
 };
 
 const NewsLetter = () => {
@@ -21,13 +22,13 @@ const NewsLetter = () => {
       </h4>
       {/* firstName */}
       <div className="form-row">
-        <label htmlFor="firstName" className="form-label">
+        <label htmlFor="name" className="form-label">
           first name
         </label>
         <input
           type="text"
-          name="firstName"
-          id="firstName"
+          name="name"
+          id="name"
           className="form-input"
           defaultValue="john"
         />
