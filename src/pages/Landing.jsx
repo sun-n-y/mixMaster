@@ -20,13 +20,19 @@ const searchCocktailsQuery = (searchTerm) => {
 export const loader = async ({ request }) => {
   const url = new URL(request.url);
   const searchTerm = url.searchParams.get('search') || '';
-  const { data: drinks } = () => useQuery(searchCocktailsQuery(searchTerm));
 
   return { searchTerm };
 };
 
 const Landing = () => {
-  const { searchTerm, drinks } = useLoaderData();
+  const { searchTerm } = useLoaderData();
+  const { data: drinks, isLoading } = useQuery(
+    searchCocktailsQuery(searchTerm)
+  );
+
+  if (isLoading) {
+    return <h2>loading...</h2>;
+  }
 
   return (
     <>
